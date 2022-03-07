@@ -2,6 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const UserSchema = new Schema({
   name: { type: String, required: true, trim: true },
+  phone: {type: Number, required: true, unique: true}, 
   email: {
     type: String,
     required: true,
@@ -16,6 +17,7 @@ const UserSchema = new Schema({
     required: true,
     default: "USER",
   },
+  tour: [{ type: mongoose.Types.ObjectId, ref: "Tour" }],
 });
 
 const UserModel = model("User", UserSchema);
